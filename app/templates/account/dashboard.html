@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Dashboard
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <h3 class="mt-4"> Dashboard</h3>
+    <div class="card mt-4">
+      <div class="card-header">
+        <h4>Auctions List </h4>
+        <a class="btn btn-primary float-right" href="">
+          RANDOM
+        </a>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id ="dataTable">
+            <thead>
+              <tr>
+                <td>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready( function () {
+    $('#dataTable').DataTable();
+  } );
+</script>
+{% endblock %}
+

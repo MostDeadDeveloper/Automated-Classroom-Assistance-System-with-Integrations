@@ -23,7 +23,6 @@ from account.views import BaseRedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
+    path('users/', include('django.contrib.auth.urls')),
     path('', BaseRedirectView.as_view(), name='index'),
-
-
 ]

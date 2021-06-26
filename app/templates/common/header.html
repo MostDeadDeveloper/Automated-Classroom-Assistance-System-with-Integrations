@@ -29,15 +29,15 @@
       <div class="sb-sidenav-menu">
     <div class="nav">
         <div class="sb-sidenav-menu-heading">Core</div>
-        {% if user.is_bidder %}
-        <a class="nav-link" href="{% url 'products:all_products_bidded' %}">
+        {% if user.is_authenticated %}
+        <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Bidder Dashboard
         </a>
         {% endif %}
         {% if not user.is_bidder %}
 
-        <a class="nav-link" href="{% url 'account:supplier_dashboard' %}">
+        <a class="nav-link" href="">
         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
         Supplier Dashboard
           </a>
@@ -87,34 +87,34 @@
       {% comment %}</nav>{% endcomment %}
         {% comment %}</div>{% endcomment %}
       <div class="sb-sidenav-menu-heading">Shorcuts</div>
-        {% if not user.is_bidder %}
-        <a class="nav-link" href={% url 'auction:all_auctions' %}>
+      {% if not user.is_authenticated %}
+        <a class="nav-link" href=>
           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
             My Auctions
         </a>
-        <a class="nav-link" href="{% url 'products:all' %}">
+        <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
             My Auctioned Products
         </a>
-        <a class="nav-link" href="{% url 'products:all_products_releasable' %}">
+        <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
             Releasable Products
         </a>
         {% endif %}
         {% if user.is_bidder %}
-        <a class="nav-link" href="{% url 'auction:all_auctions_available' %}">
+        <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
             Available Auctions
         </a>
-        <a class="nav-link" href="{% url 'auction:all_auctions_ongoing' %}">
+        <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
             Ongoing Auctions
         </a>
-        <a class="nav-link" href="{% url 'products:all_products_claimed' %}">
+        <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
             Owned/Claimed Products
         </a>
-        <a class="nav-link" href="{% url 'products:all_products_unclaimed' %}">
+        <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Unclaimed Products
         </a>
