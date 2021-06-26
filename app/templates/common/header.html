@@ -1,0 +1,129 @@
+{% load static %}
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    {% if user.is_bidder %}
+    <a class="navbar-brand" href="/">Auction System - Bidder</a>
+    {% else %}
+    <a class="navbar-brand" href="/">Auction System - Supplier</a>
+    {% endif%}
+    <button class="btn btn-link btn-sm order-1 order-lg-0"
+            style="margin-left:20px;"
+            id="sidebarToggle"
+            href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    </form>
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </li>
+    </ul>
+    <!-- Navbar-->
+</nav>
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+      <div class="sb-sidenav-menu">
+    <div class="nav">
+        <div class="sb-sidenav-menu-heading">Core</div>
+        {% if user.is_bidder %}
+        <a class="nav-link" href="{% url 'products:all_products_bidded' %}">
+          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+          Bidder Dashboard
+        </a>
+        {% endif %}
+        {% if not user.is_bidder %}
+
+        <a class="nav-link" href="{% url 'account:supplier_dashboard' %}">
+        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+        Supplier Dashboard
+          </a>
+        {% endif %}
+
+        {% comment %}<div class="sb-sidenav-menu-heading">Shorcuts</div>{% endcomment %}
+        {% comment %}<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">{% endcomment %}
+      {% comment %}<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>{% endcomment %}
+      {% comment %}Auctions{% endcomment %}
+      {% comment %}<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>{% endcomment %}
+        {% comment %}</a>{% endcomment %}
+        {% comment %}<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">{% endcomment %}
+      {% comment %}<nav class="sb-sidenav-menu-nested nav">{% endcomment %}
+          {% comment %}<a class="nav-link" href="layout-static.html">Static Navigation</a>{% endcomment %}
+          {% comment %}<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>{% endcomment %}
+      {% comment %}</nav>{% endcomment %}
+        {% comment %}</div>{% endcomment %}
+        {% comment %}<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">{% endcomment %}
+      {% comment %}<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>{% endcomment %}
+      {% comment %}Pages{% endcomment %}
+      {% comment %}<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>{% endcomment %}
+        {% comment %}</a>{% endcomment %}
+        {% comment %}<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">{% endcomment %}
+      {% comment %}<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">{% endcomment %}
+          {% comment %}<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">{% endcomment %}
+        {% comment %}Authentication{% endcomment %}
+        {% comment %}<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>{% endcomment %}
+          {% comment %}</a>{% endcomment %}
+          {% comment %}<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">{% endcomment %}
+        {% comment %}<nav class="sb-sidenav-menu-nested nav">{% endcomment %}
+            {% comment %}<a class="nav-link" href="login.html">Login</a>{% endcomment %}
+            {% comment %}<a class="nav-link" href="register.html">Register</a>{% endcomment %}
+            {% comment %}<a class="nav-link" href="password.html">Forgot Password</a>{% endcomment %}
+        {% comment %}</nav>{% endcomment %}
+          {% comment %}</div>{% endcomment %}
+          {% comment %}<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">{% endcomment %}
+        {% comment %}Error{% endcomment %}
+        {% comment %}<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>{% endcomment %}
+          {% comment %}</a>{% endcomment %}
+          {% comment %}<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">{% endcomment %}
+        {% comment %}<nav class="sb-sidenav-menu-nested nav">{% endcomment %}
+            {% comment %}<a class="nav-link" href="401.html">401 Page</a>{% endcomment %}
+            {% comment %}<a class="nav-link" href="404.html">404 Page</a>{% endcomment %}
+            {% comment %}<a class="nav-link" href="500.html">500 Page</a>{% endcomment %}
+        {% comment %}</nav>{% endcomment %}
+          {% comment %}</div>{% endcomment %}
+      {% comment %}</nav>{% endcomment %}
+        {% comment %}</div>{% endcomment %}
+      <div class="sb-sidenav-menu-heading">Shorcuts</div>
+        {% if not user.is_bidder %}
+        <a class="nav-link" href={% url 'auction:all_auctions' %}>
+          <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+            My Auctions
+        </a>
+        <a class="nav-link" href="{% url 'products:all' %}">
+          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+            My Auctioned Products
+        </a>
+        <a class="nav-link" href="{% url 'products:all_products_releasable' %}">
+          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+            Releasable Products
+        </a>
+        {% endif %}
+        {% if user.is_bidder %}
+        <a class="nav-link" href="{% url 'auction:all_auctions_available' %}">
+          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+            Available Auctions
+        </a>
+        <a class="nav-link" href="{% url 'auction:all_auctions_ongoing' %}">
+          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+            Ongoing Auctions
+        </a>
+        <a class="nav-link" href="{% url 'products:all_products_claimed' %}">
+          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+            Owned/Claimed Products
+        </a>
+        <a class="nav-link" href="{% url 'products:all_products_unclaimed' %}">
+          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+          Unclaimed Products
+        </a>
+        {% endif %}
+        </div>
+      </div>
+      <div class="sb-sidenav-footer">
+    <div class="small">Logged in as:</div>
+        {{ request.user }}
+      </div>
+  </nav>
+    </div>

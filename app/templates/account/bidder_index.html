@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  My Dashboard
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <h3 class="mt-4"> My Dashboard </h3>
+    <div class="card mt-4">
+      <div class="card-header">
+        <h4>My Ongoing Auctions </h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id ="dataTable">
+            <thead>
+              <tr>
+                <th>Auction Name</th>
+                <th>Starting Date</th>
+                <th>Ending Date</th>
+                <th> Highest Current Bid </th>
+                <th> Minimum Bid Required </th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for auction in auction_list %}
+                <tr>
+                  <td>{{ auction.name }}</td>
+                  <td>{{ auction.start_date }}</td>
+                  <td>{{ auction.end_date }}</td>
+                  <td> {{ auction.highest_bid }} </td>
+                  <td> {{ auction.minimum_bid_requirement }} </td>
+                </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready( function () {
+    $('#dataTable').DataTable();
+  } );
+</script>
+{% endblock %}

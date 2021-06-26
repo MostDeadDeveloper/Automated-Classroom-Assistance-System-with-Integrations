@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+
+  {# Meta Section #}
+  {% include 'common/metas.html' %}
+  {% block head_meta %}
+  {% endblock head_meta %}
+
+  <title>
+    {% block title %}
+      Auction System
+    {% endblock title %}
+  </title>
+
+  {# Fonts Section #}
+  {% include 'common/fonts.html' %}
+  {% block head_fonts %}
+  {% endblock head_fonts %}
+
+  {# Styles Section #}
+  {% include 'common/styles.html' %}
+  {% block head_styles %}
+  {% endblock head_styles %}
+
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+  {# Django JS Reverse #}
+  {% comment %}
+    Put this here so that it will be accessible already for the Vue components
+  {% endcomment %}
+
+  {% comment %}
+    Disable this since we are not using a VUE FOR THIS PROJECT.
+    <script src="{% url 'js_reverse' %}" type="text/javascript"></script>
+  {% endcomment %}
+
+  </head>
+<body class="sb-nav-fixed">
+
+{% block body %}
+    {% block header %}
+    {% include 'common/header.html' %}
+    {% endblock header %}
+
+    <div id="layoutSidenav_content">
+    {% block content %}
+
+    {% endblock content %}
+
+    {% block footer %}
+    {% include 'common/footer.html' %}
+    {% endblock footer %}
+    </div>
+{% endblock body %}
+
+{# JS Section #}
+{% include 'common/scripts.html' %}
+{% block scripts %}
+{% endblock scripts %}
+
+{# Quick and dirty on page JS Section #}
+{% block page_scripts %}
+{% endblock page_scripts %}
+</body>
+</html>
