@@ -8,7 +8,7 @@ from .models import Social
 
 
 def base_view(request):
-    professor_data = Professor.objects.all().order_by('subject_out')
+    professor_data = Professor.objects.all().order_by('professor_in')
     subject_data = Subject.objects.all()
     contact_data = Contact.objects.all()
     email_data = Email.objects.all()
