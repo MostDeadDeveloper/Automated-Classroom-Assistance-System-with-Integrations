@@ -1,0 +1,66 @@
+{% extends 'billboard/base_view.html' %}
+
+{% block content %}
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+    <article class="main_table">
+        <div class="table_container">
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Professor</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Social</th>
+                    <th>Date Updated</th>
+                </tr>
+                    {% for main_data in professor_data %}
+                        <tr>
+                            <td>
+                                {% for sub_data in main_data.subject_out.all %}
+                                    {{ sub_data }}
+                                {% endfor %}
+                            </td>
+                            <td>{{ main_data.professor_in }}</td>
+                            <td>
+                                {% for sub_data in main_data.contact_out.all %}
+                                    {{ sub_data }}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for sub_data in main_data.email_out.all %}
+                                    {{ sub_data }}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for sub_data in main_data.social_out.all %}
+                                    {{ sub_data }}
+                                {% endfor %}
+                            </td>
+                            <td>{{ main_data.up_date }}</td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+{% endblock %}
+
+
+
+<!--                <time>published: {{ post.published_date }}</time>-->
+<!--                <h2><a href="">{{ post.title }}</a></h2>-->
+<!--                <p>{{ post.text|linebreaksbr }}</p>-->

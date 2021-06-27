@@ -1,0 +1,114 @@
+{% extends 'app/base_view.html' %}
+
+{% block content %}
+    <article class="main_table">
+        <div class="table_container">
+            <table>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Name Suffix</th>
+                    <th>Sex</th>
+                    <th>Citizenship</th>
+                    <th>Religion</th>
+                    <th>Civil Status</th>
+                    <th>Birth Date</th>
+                    <th>Age</th>
+                    <th>Birth Place</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Permanent Address</th>
+                    <th>Current Address</th>
+                    <th>Father's Name</th>
+                    <th>Mother's Name</th>
+                    <th>Academic Year</th>
+                    <th>Course Code</th>
+                    <th>Class</th>
+                    <th>Section</th>
+                </tr>
+                    {% for data in student_data %}
+                        <tr>
+                            <td>{{ data.student_id }}</td>
+                            <td>{{ data.last_name }}</a></td>
+                            <td>{{ data.first_name }}</a></td>
+                            <td>{{ data.middle_name }}</a></td>
+                            <td>{{ data.suffix_name }}</a></td>
+                            <td>{{ data.sex }}</a></td>
+                            <td>{{ data.citizenship }}</a></td>
+                            <td>{{ data.religion }}</a></td>
+                            <td>{{ data.civil_status }}</a></td>
+                            <td>{{ data.birth_date }}</a></td>
+                            <td>{{ data.age }}</a></td>
+                            <td>{{ data.birth_place }}</a></td>
+                            <td>{{ data.contact_no }}</a></td>
+                            <td>{{ data.email }}</a></td>
+                            <td>{{ data.perm_address }}</a></td>
+                            <td>{{ data.curr_address }}</a></td>
+                            <td>{{ data.name_father }}</a></td>
+                            <td>{{ data.name_mother }}</a></td>
+                            <td>{{ data.acad_year }}</a></td>
+                            <td>{{ data.course_code }}</a></td>
+                            <td>{{ data.class_no }}</a></td>
+                            <td>{{ data.section }}</a></td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+        <br>
+        <div class="table_container">
+            <table>
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Subject</th>
+                    <th>Subject Professor</th>
+                </tr>
+                    {% for data in subject_data %}
+                        <tr>
+                            <td>{{ data.subject_code }}</td>
+                            <td>{{ data.subject }}</a></td>
+                            <td>{{ data.subject_professor }}</a></td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+        <br>
+        <div class="table_container">
+            <table>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Subject Code</th>
+                    <th>Room</th>
+                </tr>
+                    {% for data in room_data %}
+                        <tr>
+                            <td>{{ data.student_id }}</td>
+                            <td>{{ data.subject_code }}</a></td>
+                            <td>{{ data.room }}</a></td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+            <br>
+        <div class="table_container">
+            <table>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Course</th>
+                </tr>
+                    {% for data in course_data %}
+                        <tr>
+                            <td>{{ data.course_code }}</td>
+                            <td>{{ data.course }}</a></td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+{% endblock %}
+
+
+
+<!--                <time>published: {{ post.published_date }}</time>-->
+<!--                <h2><a href="">{{ post.title }}</a></h2>-->
+<!--                <p>{{ post.text|linebreaksbr }}</p>-->

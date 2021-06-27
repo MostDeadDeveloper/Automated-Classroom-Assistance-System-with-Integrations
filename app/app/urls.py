@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
     path('', BaseRedirectView.as_view(), name='index'),
+    path('billboard/', include('billboard.urls')),
 
 
 ]
