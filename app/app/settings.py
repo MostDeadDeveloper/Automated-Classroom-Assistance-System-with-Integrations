@@ -36,6 +36,7 @@ DJANGO_APPS = [
     #  'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'rest_framework',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
@@ -54,6 +55,7 @@ LOCAL_APPS = [
     'account',
     'subject',
     'attendance',
+    'api',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
