@@ -1,5 +1,6 @@
 asgiref==3.3.4
 Django==3.2.4
+django-constance==2.8.0
 django-filter==2.4.0
 django-js-reverse==0.9.1
 djangorestframework==3.12.4
