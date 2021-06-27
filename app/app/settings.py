@@ -36,13 +36,14 @@ DJANGO_APPS = [
     #  'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
 
 THIRD_PARTY_APPS = [
-
-    # 'rest_framework',
+    'rest_framework',
+    'constance',
     # 'drf_multiple_model',
 
     # 'django_js_reverse',

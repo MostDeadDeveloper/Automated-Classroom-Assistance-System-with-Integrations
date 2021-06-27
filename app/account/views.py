@@ -14,8 +14,14 @@ class BaseRedirectView(RedirectView):
         if not user.is_authenticated:
             return reverse('account:account_login')
 
+        if user.is_authenticated:
+            return reverse('account:dashboard')
+
         # if user.is_bidder:
             # return reverse('products:all_products_bidded')
-        # else:
-            # return reverse('account:supplier_dashboard')
+
+
+class DashboardView(LoginGenericView):
+    template_name = 'account/dashboard.html'
+
 
