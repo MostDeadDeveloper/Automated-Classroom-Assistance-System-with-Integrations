@@ -9,33 +9,25 @@
                     <th>Subject</th>
                     <th>Contact Number</th>
                     <th>Email</th>
-                    <th>Social</th>
+                    <th>Social Media</th>
                     <th>Date Updated</th>
                 </tr>
-                    {% for main_data in professor_data %}
+                    {% for data in data_info %}
                         <tr>
-                            <td><a href="{% url 'billboard:info_detail' pk=main_data.pk %}">{{ main_data.professor_in }}</a></td>
+                            <td><a href="{% url 'billboard:info_detail' pk=data.pk %}">{{ data.professor_data }}</a></td>
                             <td>
-                                {% for sub_data in main_data.subject_out.all %}
-                                    {{ sub_data }}<br>
-                                {% endfor %}
+                                {{ data.subject_data }}<br>
                             </td>
                             <td>
-                                {% for sub_data in main_data.contact_out.all %}
-                                    {{ sub_data }}<br>
-                                {% endfor %}
+                                {{ data.contact_data }}<br>
                             </td>
                             <td>
-                                {% for sub_data in main_data.email_out.all %}
-                                    {{ sub_data }}<br>
-                                {% endfor %}
+                                {{ data.email_data }}<br>
                             </td>
                             <td>
-                                {% for sub_data in main_data.social_out.all %}
-                                    {{ sub_data }}<br>
-                                {% endfor %}
+                                {{ data.social_data }}<br>
                             </td>
-                            <td>{{ main_data.up_date }}</td>
+                            <td>{{ data.up_date }}</td>
                         </tr>
                     {% endfor %}
             </table>

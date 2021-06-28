@@ -1,10 +1,11 @@
 {% extends 'billboard/base_view.html' %}
 
 {% block content %}
-    <h2>New Form</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <h2>Professor Information</h2>
+    <h5>Note: For multiple values (e.g. Contact: 099xxxxxxxx, 098xxxxxxxx), separate by inputting the next value on the next line.</h5>
+    <form method="POST" class="info-form">{% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="save btn btn-default">SUBMIT</input>
+        <input type="submit" class="save btn btn-default" value="SAVE">
     </form>
 {% endblock %}
 
