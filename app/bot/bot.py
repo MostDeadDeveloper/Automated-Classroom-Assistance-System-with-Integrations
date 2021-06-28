@@ -18,7 +18,6 @@ USERID = os.getenv('DISCORD_USER')
 #handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 #logger.addHandler(handler)
 
-client = discord.Client()
 client = commands.Bot(command_prefix = '!')
 BOT_MODE = True
 SELECTED_CHANNEL_INDEX = 0
@@ -56,4 +55,12 @@ async def list_all_subjects(ctx):
 
     await ctx.send("\n".join("{} - {}".format(x, y) for x, y in zip(schedule, subjects)))
 
-client.run('ODU4MzAxNDUxODc1Nzc4NTgy.YNcJhA.Xb1rM6mSyzjdQR1UqDWb3oyFtFQ')
+@client.command()
+async def recent_announcements(ctx):
+    await ctx.send('Recent Announcements')
+    date = ["June 25", "July 3", "July 5", "July 6", "July 17"]
+    announcements = ["ERD Graded Exercise", "Art App Assumptions of Art", "DAA Final paper", "DAA Final presentation", "OS Final Project"]
+
+    await ctx.send("\n".join("{} - {}".format(x, y) for x, y in zip(date, announcements)))
+
+client.run(TOKEN)
