@@ -1,0 +1,24 @@
+{% extends 'billboard/base_view.html' %}
+
+{% block content %}
+    <h3>Date Updated:</h3>
+        <h4>{{ professor_data.up_date }}</h4><br>
+    <h2 class="info_header">Professor:</h2>
+        <h4 class="info_data">{{ professor_data.professor_in }}</h4><br>
+    <h3 class="info_header">Subject:</h3>
+        {% for sub_data in professor_data.subject_out.all %}
+            <h4 class="info_data">{{ sub_data }}</h4>
+        {% endfor %}<br>
+    <h3 class="info_header">Contact Number:</h3>
+        {% for sub_data in professor_data.contact_out.all %}
+            <h4 class="info_data">{{ sub_data }}</h4>
+        {% endfor %}<br>
+    <h3 class="info_header">Email:</h3>
+        {% for sub_data in professor_data.email_out.all %}
+            <h4 class="info_data">{{ sub_data }}</h4>
+        {% endfor %}<br>
+    <h3 class="info_header">Social:</h3>
+        {% for sub_data in professor_data.social_out.all %}
+            <h4 class="info_data">{{ sub_data }}</h4>
+        {% endfor %}<br>
+{% endblock %}

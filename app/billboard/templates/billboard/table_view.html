@@ -14,7 +14,7 @@
                 </tr>
                     {% for main_data in professor_data %}
                         <tr>
-                            <td>{{ main_data.professor_in }}</td>
+                            <td><a href="{% url 'billboard:info_detail' pk=main_data.pk %}">{{ main_data.professor_in }}</a></td>
                             <td>
                                 {% for sub_data in main_data.subject_out.all %}
                                     {{ sub_data }}<br>
@@ -40,10 +40,5 @@
                     {% endfor %}
             </table>
         </div>
+    </article>
 {% endblock %}
-
-
-
-<!--                <time>published: {{ post.published_date }}</time>-->
-<!--                <h2><a href="">{{ post.title }}</a></h2>-->
-<!--                <p>{{ post.text|linebreaksbr }}</p>-->

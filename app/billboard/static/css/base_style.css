@@ -5,15 +5,15 @@ h1 a, h2 a, h3 a {
 /*#0066BC; #00CED8*/
 body {
     padding-left: 0px;
-    padding-right: 1000px;
+    padding-right: 1200px;
 }
 .page-header {
     border: 5px solid #dddddd;
     background-color: #FF775A;
     margin-top: 0;
     margin-bottom: 40px;
-    padding: 20px 1000px 20px 10px;
-    width: 2500px;
+    padding: 20px 1000px 20px 50px;
+    width: 1550px;
 }
 
 .page-header h1,
@@ -29,7 +29,10 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: 'Alfa Slab One', normal;
+    font-family: 'Times New Roman', 'Helvetica', sans-serif;
+}
+h6 {
+    font-style: italic;
 }
 
 .date {
@@ -53,6 +56,10 @@ h4 {
     font-size: 26pt;
     margin-right: 12px;
     margin-top: -18px;
+}
+
+.data {
+    font-family: 'Trebuchet MS',sans-serif;
 }
 
 .main_table {
@@ -80,8 +87,26 @@ h4 {
     color: #FFFFFF;
     background-color: #C25100;
 }
-
-
+/*=============================info_view.html=============================*/
+.info_header {
+  border: 2px solid #dddddd;
+  padding: 10px 0px 10px 0px;
+  border-radius:10px;
+  text-align: center;
+  background-color: skyblue;
+  border-top: none;
+  font-family: 'Trebuchet MS',sans-serif;
+  font-size: 25px;
+  width: 100%;
+}
+.info_data {
+  border: 2px solid #dddddd;
+  padding: 5px 0px 5px 3s0px;
+  text-align: left;
+  font-family: 'Trebuchet MS',sans-serif;
+  font-size: 20px;
+}
+/*=============================table_view.html | Tables=============================*/
 table {
   font-family: arial, sans-serif;
       border-collapse: separate;
@@ -89,20 +114,24 @@ table {
   border-radius:10px;
   -moz-border-radius:6px;
 }
-
+th {
+  border: 2px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  background-color: skyblue;
+  border-top: none;
+  font-family: 'Trebuchet MS',sans-serif;
+  font-size: 20px;
+}
 td {
   border: 2px solid #dddddd;
   text-align: left;
   padding: 8px;
+  font-family: 'Trebuchet MS',sans-serif;
 }
-th {
-  border: 2px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  background-color: skyblue;
-   border-top: none;
-}
-
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+tr:nth-child(odd) {
+  background-color: #ffffff;
 }
