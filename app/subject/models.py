@@ -8,7 +8,9 @@ from core.models import BaseModel
 
 class Subject(BaseModel):
     name = models.CharField(max_length=32)
-    # sections = models.ManytoManyField()
+    sections = models.ManyToManyField(
+        'account.Section',
+    )
 
 
 class SubjectSchedule(BaseModel):

@@ -9,12 +9,12 @@ app_name ='api'
 
 urlpatterns = [
     path(
-        'accounts',
+        'accounts/',
         include((account_patterns,'accounts'),namespace='accounts'),
         name='account_api',
     ),
     path(
-        'subjects',
+        'subjects/',
         include((subject_patterns,'subjects'),namespace='subjects'),
         name='subject_api',
     ),
