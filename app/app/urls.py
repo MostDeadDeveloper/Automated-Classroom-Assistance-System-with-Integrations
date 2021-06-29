@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import path, include, re_path
 
+from rest_framework.authtoken import views
+
 from account.views import BaseRedirectView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
+    path('api-token-auth/',views.obtain_auth_token),
     path('api/', include('api.urls', namespace='api')),
     path('users/', include('django.contrib.auth.urls')),
     path('', BaseRedirectView.as_view(), name='index'),
