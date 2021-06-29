@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    ACASI | Billboard
+{% endblock %}
+
+{% block content %}
+    <div class="bb_header_container">
+        <div class="bb_new">
+                <a href="/billboard" class="btn btn-default">
+                    <img src="{% static 'images/icons/house-door.svg' %}" alt="HOME"/>
+                </a>
+            </div>
+        <div class="bb_title">
+            <h1 class="header_text"><a href="/billboard">ACASI | Billboard</a></h1>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="bb_new">
+                <a href="{% url 'billboard:info_new' %}" class="btn btn-default">
+                    <img src="{% static 'images/icons/file-earmark-plus.svg' %}" alt="NEW"/>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="bb_main_container">
+        {% block billboard_content %}
+        {% endblock billboard_content %}
+    </div>
+{% endblock %}

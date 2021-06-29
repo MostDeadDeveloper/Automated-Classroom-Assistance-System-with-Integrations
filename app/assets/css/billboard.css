@@ -1,0 +1,221 @@
+/*#0066BC; #00CED8*/
+.header_text{
+    margin: 0px 0px 0px 50px;
+    font-size: 36pt;
+    text-shadow: 4px 4px 6px #34353b;
+}
+.title_text{
+    margin: 0px 0px 0px 50px;
+    font-size: 36pt;
+    text-shadow: 2px 2px 4px #5c5c5c;
+    font-family: 'Roboto Slab', serif;
+}
+/*=============================base_view.html=============================*/
+.bb_header_container {
+    border: 5px solid #dddddd;
+    background-color: #5c5c5c;
+    width: 100%;
+    display: flex;
+    height: auto;
+    margin: 0px 0px 0px 0px;
+}
+.bb_home {
+    margin: auto;
+    justify-content: center;
+}
+.bb_title {
+    width: 1000px;
+    height: auto;
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+}
+.b { flex: 1; text-align: center; background: blue;}
+.bb_new {
+    margin: auto;
+    justify-content: center;
+}
+.bb_main_container {
+    position: absolute;
+    padding: auto;
+    margin: 120px 0px 0px 0px;
+}
+.bb_title h1,
+.bb_title h1 a,
+.bb_title h1 a:visited,
+.bb_title h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+.btn-default,
+.btn-default:visited {
+    color: #c9bfbf;
+    background: none;
+    border: 3px solid #c9bfbf;
+}
+
+.btn-default:hover {
+    color: #FFFFFF;
+    background-color: #c9bfbf;
+}
+
+/*==========================================================*/
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Times New Roman', 'Helvetica', sans-serif;
+}
+h6 {
+    font-style: italic;
+}
+
+.date {
+    color: #828282;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea,
+.post-form input {
+    width: 100%;
+}
+
+.top-menu,
+.top-menu:hover,
+.top-menu:visited {
+    color: #ffffff;
+    float: left;
+    font-size: 26pt;
+    margin-right: 12px;
+    margin-top: -18px;
+}
+
+.data {
+    font-family: 'Trebuchet MS',sans-serif;
+}
+
+.main_table {
+    margin-bottom: 70px;
+}
+
+.main_table h2 a,
+.main_table h2 a:visited {
+    color: #000000;
+}
+
+.main_table > .date,
+.main_table > .actions {
+    float: right;
+}
+
+
+/*=============================info_view.html=============================*/
+.info_container {
+    margin: 0px 0px 0px 30px;
+    padding: 0px 50px 0px 30px;
+}
+.info_header {
+  border: 2px solid #dddddd;
+  padding: 10px 0px 10px 0px;
+  border-radius:10px;
+  text-align: center;
+  background-color: #c9bfbf;
+  border-top: none;
+  font-family: 'Trebuchet MS',sans-serif;
+  font-size: 25px;
+  width: 100%;
+}
+.info_data {
+  border: 2px solid #dddddd;
+  padding: 5px 500px 5px 30px;
+  text-align: left;
+  font-family: 'Trebuchet MS',sans-serif;
+  font-size: 20px;
+}
+.btn-detail,
+.btn-detail:visited {
+    color: #99b5c9;
+    background: none;
+    border: 3px solid #99b5c9;
+    padding: 20px 40px 20px 40px;
+}
+
+.btn-detail:hover {
+    color: #FFFFFF;
+    background-color: #99b5c9;
+}
+/*==========================================================*/
+/*=============================form_view.html=============================*/
+.form_container {
+    margin: 0px 0px 0px 30px;
+}
+.form_header {
+  margin: 0px 800px 0px 0px;
+  padding: 10px 0px 10px 0px;
+  border: 2px solid #dddddd;
+  border-radius:10px;
+  text-align: center;
+  background-color: #c9bfbf;
+  border-top: none;
+  font-family: 'Trebuchet MS',sans-serif;
+  font-size: 25px;
+}
+.form_data {
+  padding: 0px 20px 0px 0px;
+  text-align: left;
+  font-family: 'Trebuchet MS',sans-serif;
+  font-size: 20px;
+}
+.btn-save,
+.btn-save:visited {
+    margin: 0px 0px 50px 0px;
+    color: #d4001c;
+    background: none;
+    border: 3px solid #d4001c;
+    padding: 20px 40px 20px 40px;
+    font-size: 16pt;
+}
+
+.btn-save:hover {
+    color: #FFFFFF;
+    background-color: #d4001c;
+}
+/*==========================================================*/
+/*=============================table_view.html | Tables=============================*/
+.bb_table_container {
+    margin: 5px 20px 0px 20px;
+    padding: 0px 20px 0px 20px;
+}
+.bb_table {
+  font-family: arial, sans-serif;
+      border-collapse: separate;
+  border:solid grey 4px;
+  border-radius:10px;
+  -moz-border-radius:6px;
+}
+.bb_th {
+  border: 2px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  background-color: #7b7e9c;
+  border-top: none;
+  font-family: 'Trebuchet MS',sans-serif;
+  font-size: 20px;
+}
+.bb_td {
+  border: 2px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-family: 'Trebuchet MS',sans-serif;
+}
+.bb_tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.bb_tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+/*==========================================================*/

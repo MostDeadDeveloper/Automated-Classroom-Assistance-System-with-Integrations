@@ -20,7 +20,7 @@ def info_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
+            post.up_date = timezone.now()
             post.save()
             return redirect('billboard:info_detail', pk=post.pk)
     else:
@@ -35,12 +35,18 @@ def info_edit(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
+            post.up_date = timezone.now()
             post.save()
             return redirect('billboard:info_detail', pk=post.pk)
     else:
         form = ProfessorForm(instance=post)
     return render(request, 'billboard/form_view.html', {'form': form})
+
+
+def info_remove(request, pk):
+    post = get_object_or_404(Professor, pk=pk)
+    post.delete()
+    return redirect('billboard:base_view')
 
 
 # Create your views here.

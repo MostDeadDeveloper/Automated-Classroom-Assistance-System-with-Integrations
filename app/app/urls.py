@@ -25,7 +25,7 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('api/', include('api.urls', namespace='api')),
     path('users/', include('django.contrib.auth.urls')),
-    path('', BaseRedirectView.as_view(), name='index'),
     path('billboard/', include('billboard.urls')),
+    path('', BaseRedirectView.as_view(), name='index'),
 
 ]
