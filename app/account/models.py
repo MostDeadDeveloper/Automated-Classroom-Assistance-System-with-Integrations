@@ -7,6 +7,30 @@ from .managers import AccountManager
 
 from core.models import BaseModel
 
+
+class Section(BaseModel):
+    year_level = models.CharField(max_length=10)
+
+
+class Student(BaseModel):
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
+    account = models.OneToOneField(
+        'account.Account',
+        on_delete=models.CASCADE,
+        null=True,
+    )
+
+    @property
+    def full_name(self):
+        return '{} - {}'.format (
+            self.section,
+            self.account,
+        )
+
+# Add the Professor Class Here Later
+# class Professor():
+
+
 class Account(AbstractUser):
     email = models.EmailField(
         verbose_name='email address',
@@ -24,10 +48,18 @@ class Account(AbstractUser):
         unique=False,
         blank=True,
     )
+    first_name = models.CharField(max_length=15, null=True)
+    last_name = models.CharField(max_length=15, null=True)
+    middle_name = models.CharField(max_length=15, null=True)
 
     REQUIRED_FIELDS = []
 
     objects = AccountManager()
 
     def __str__(self):
-        return self.email
+        return '{} {} {} '.format(
+            self.last_name,
+            self.first_name,
+            self.middle_name,
+        )
+
