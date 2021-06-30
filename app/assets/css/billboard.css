@@ -60,59 +60,6 @@
 }
 
 /*==========================================================*/
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: 'Times New Roman', 'Helvetica', sans-serif;
-}
-h6 {
-    font-style: italic;
-}
-
-.date {
-    color: #828282;
-}
-
-.save {
-    float: right;
-}
-
-.post-form textarea,
-.post-form input {
-    width: 100%;
-}
-
-.top-menu,
-.top-menu:hover,
-.top-menu:visited {
-    color: #ffffff;
-    float: left;
-    font-size: 26pt;
-    margin-right: 12px;
-    margin-top: -18px;
-}
-
-.data {
-    font-family: 'Trebuchet MS',sans-serif;
-}
-
-.main_table {
-    margin-bottom: 70px;
-}
-
-.main_table h2 a,
-.main_table h2 a:visited {
-    color: #000000;
-}
-
-.main_table > .date,
-.main_table > .actions {
-    float: right;
-}
-
-
 /*=============================info_view.html=============================*/
 .info_container {
     margin: 0px 0px 0px 30px;
@@ -164,12 +111,16 @@ h6 {
   font-family: 'Trebuchet MS',sans-serif;
   font-size: 25px;
 }
-.form_data {
+.info-form textarea,
+.info-form input {
+    width: 50%;
+}
+/*.form_data {
   padding: 0px 20px 0px 0px;
   text-align: left;
   font-family: 'Trebuchet MS',sans-serif;
   font-size: 20px;
-}
+}*/
 .btn-save,
 .btn-save:visited {
     margin: 0px 0px 50px 0px;
