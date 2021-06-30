@@ -9,8 +9,8 @@
             <a class="btn btn-detail" href="{% url 'billboard:info_edit' pk=data_info.pk %}">
                 <img src="{% static 'images/icons/pencil-fill.svg' %}" alt="EDIT"/>
             </a>
+            <a class="btn btn-detail" href="{% url 'billboard:info_remove' pk=data_info.pk %}">REMOVE</a>
         {% endif %}
-            <a class="btn btn-default" href="{% url 'billboard:info_remove' pk=data_info.pk %}"><span class="glyphicon glyphicon-remove">REMOVE</span></a>
     </aside>
     <h3>Date Updated:</h3>
         <h4>{{ data_info.up_date }}</h4><br>
