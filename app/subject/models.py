@@ -12,6 +12,7 @@ class Subject(BaseModel):
 
 
 class SubjectSchedule(BaseModel):
+    date = models.DateField(blank=True, null=True)
     start_time = models.TimeField(blank=True, null=True)
     end_time = models.TimeField(blank=True, null=True)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)

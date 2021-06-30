@@ -7,7 +7,7 @@ from .models import Subject, SubjectSchedule
 
 class SubjectScheduleInline(admin.TabularInline):
     model = SubjectSchedule
-    fields = ('subject','start_time', 'end_time','duration')
+    fields = ('date','subject','start_time', 'end_time','duration')
     readonly_fields = ('duration',)
 
 
