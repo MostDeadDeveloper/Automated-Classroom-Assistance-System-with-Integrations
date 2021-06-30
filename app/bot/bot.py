@@ -2,6 +2,8 @@ from dotenv import load_dotenv
 import os
 import random
 import logging
+import requests
+import json
 from discord.ext import commands
 
 import discord
@@ -48,12 +50,27 @@ async def on_ready():
     print(selected_channel)
 
 @client.command()
-async def list_all_subjects(ctx):
-    await ctx.send('Subjects and Schedule')
-    schedule = ["T/F 11:30AM-01:30PM/10:30AM-01:30PM", "T/F 07:30AM-10:30AM/07:30AM-09:30AM", "W 03:00PM-06:00PM", "W 09:00AM-12:00PM", "S 10:00AM-12:00PM"]
-    subjects = ["Information Management", "Operating Systems", "CS Free Elective 2", "Art Appreciation", "Team Sports"]
+async def list_all_subjects(ctx, arg):
+    
+    try:
+        response = requests.get('http://superepicguysuper.pythonanywhere.com/api/subjects/student/1', timeout=5)
+        schedule = response.json()
+        print(schedule)
 
-    await ctx.send("\n".join("{} - {}".format(x, y) for x, y in zip(schedule, subjects)))
+        for name in schedule:
+            subj_names = json.loads(name)
+            print(name)
+        
+        response.raise_for_status()
+        print("Successful.")
+    except requests.exceptions.HTTPError as errh:
+        print(errh)
+    except requests.exceptions.ConnectionError as errc:
+        print(errc)
+    except requests.exceptions.Timeout as errt:
+        print(errt)
+    except requests.exceptions.RequestException as err:
+        print(err)
 
 @client.command()
 async def recent_announcements(ctx):
