@@ -43,7 +43,8 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'rest_framework',
-    'constance',
+    # 'constance',
+    'rest_framework.authtoken',
     # 'drf_multiple_model',
 
     # 'django_js_reverse',
@@ -122,6 +123,21 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+###### REST_FRAMEWORK CONFIGURATION
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
 
 # Login Rules
 

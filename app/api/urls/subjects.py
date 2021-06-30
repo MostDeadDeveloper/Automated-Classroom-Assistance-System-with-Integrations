@@ -6,8 +6,8 @@ from ..views.subjects import SubjectListAPIView
 
 subject_patterns = format_suffix_patterns([
     path(
-        '/list',
+        'student/<int:pk>',
         SubjectListAPIView.as_view(),
-        name='list',
+        name='subject_list',
     ),
 ])
