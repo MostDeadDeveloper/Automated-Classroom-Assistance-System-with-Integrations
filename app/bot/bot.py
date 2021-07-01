@@ -1,5 +1,7 @@
 import os
 import logging
+import requests
+import json
 
 from dotenv import load_dotenv
 from discord.ext import commands
@@ -22,27 +24,7 @@ SELECTED_CHANNEL = None
 
 @client.event
 async def on_ready():
-    print(
-        'we have logged in as {0.user}'.format(client)
-    )
-    # print('available channels: {}'.format(client.guilds[0].channels[-1]))
-    
-    print("available guilds: ")
-    for index, guild in enumerate(client.guilds):
-        print("[{}] - {}".format(index , guild))
-
-    selected_index = int(input("input your selected guild to implant bot."))
-
-    print("available channels")
-    for index, channel in enumerate(client.guilds[selected_index].channels):
-        print("[{}] - {}".format(index , channel))
-
-    selected_channel_index = int(input("input your selected channel to implant bot."))
-
-    selected_channel = client.guilds[selected_index].channels[selected_channel_index]
-    await client.guilds[0].channels[-2].send("discord bot online.")
-
-    print(selected_channel)
+    pass
 
 @client.command()
 async def list_all_subjects(ctx):
@@ -59,5 +41,13 @@ async def recent_announcements(ctx):
     announcements = ["ERD Graded Exercise", "Art App Assumptions of Art", "DAA Final paper", "DAA Final presentation", "OS Final Project"]
 
     await ctx.send("\n".join("{} - {}".format(x, y) for x, y in zip(date, announcements)))
+
+@client.command()
+async def create_new_announcement(ctx, *args):
+    url = 'http://127.0.0.1:8000/api/account/discord/auth'
+    print(ctx.author.id)
+    response = requests.post(url, data={'discord_id': ctx.author.id })
+
+    await ctx.send(response.status_code)
 
 client.run(TOKEN)
