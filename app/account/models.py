@@ -52,6 +52,8 @@ class Account(AbstractUser):
     last_name = models.CharField(max_length=15, null=True)
     middle_name = models.CharField(max_length=15, null=True)
 
+    discord_id = models.CharField(max_length=64, null=True, blank=True)
+
     REQUIRED_FIELDS = []
 
     objects = AccountManager()
