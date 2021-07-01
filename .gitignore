@@ -1,7 +1,7 @@
 # Python
 *.pyc
 *~
-__pycache__
+app/__pycache__/
 
 # Env
 .env
@@ -9,10 +9,10 @@ myvenv/
 venv/
 
 # Database
-db.sqlite3
+app/db.sqlite3
 
 # Static folder at project root
-auction_system/static/
+app/static/
 
 # macOS
 ._*
@@ -31,3 +31,5 @@ $RECYCLE.BIN/
 .history/
 *.code-workspace
 
+# logs
+app/logs/

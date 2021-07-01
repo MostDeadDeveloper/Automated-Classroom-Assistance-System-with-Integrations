@@ -1,0 +1,37 @@
+{% extends 'billboard/base_view.html' %}
+
+{% block billboard_content %}
+<div>
+    <h1 class="title_text">Professor Information</h1>
+    <div class="bb_table_container">
+        <table class="bb_table">
+            <tr class="bb_tr">
+                <th class="bb_th">Professor</th>
+                <th class="bb_th">Subject</th>
+                <th class="bb_th">Contact Number</th>
+                <th class="bb_th">Email</th>
+                <th class="bb_th">Social Media</th>
+                <th class="bb_th">Date Updated</th>
+            </tr>
+                {% for data in data_info %}
+                    <tr class="bb_tr">
+                        <td class="bb_td"><a href="{% url 'billboard:info_detail' pk=data.pk %}">{{ data.professor_data }}</a></td>
+                        <td class="bb_td">
+                            {{ data.subject_data|linebreaksbr }}<br>
+                        </td>
+                        <td class="bb_td">
+                            {{ data.contact_data|linebreaksbr }}<br>
+                        </td>
+                        <td class="bb_td">
+                            {{ data.email_data|linebreaksbr }}<br>
+                        </td>
+                        <td class="bb_td">
+                            {{ data.social_data|linebreaksbr }}<br>
+                        </td>
+                        <td class="bb_td">{{ data.up_date }}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock billboard_content %}

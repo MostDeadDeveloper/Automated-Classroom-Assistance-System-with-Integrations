@@ -1,12 +1,15 @@
 {% load static %}
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    {% if user.is_bidder %}
-    <a class="navbar-brand" href="/">Auction System - Bidder</a>
+    {% if user.is_superuser %}
+    <a class="navbar-brand" href="/">Classroom Assistance System - Admin</a>
+
+    {% elif user.student %}
+    <a class="navbar-brand" href="/">Classroom Assistance System - Student</a>
     {% else %}
-    <a class="navbar-brand" href="/">Auction System - Supplier</a>
+    <a class="navbar-brand" href="/">Classroom Assistance System - Supplier</a>
     {% endif%}
     <button class="btn btn-link btn-sm order-1 order-lg-0"
-            style="margin-left:20px;"
+            style="margin-left:160px;"
             id="sidebarToggle"
             href="#">
       <i class="fas fa-bars"></i>
@@ -30,17 +33,20 @@
     <div class="nav">
         <div class="sb-sidenav-menu-heading">Core</div>
         {% if user.is_authenticated %}
+
+        {% if user.student or user.is_superuser %}
         <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-          Bidder Dashboard
+            Student Dashboard
         </a>
         {% endif %}
-        {% if not user.is_bidder %}
 
-        <a class="nav-link" href="">
-        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-        Supplier Dashboard
+          {% if not user.is_bidder or user.is_superuser %}
+          <a class="nav-link" href="">
+            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+            Professor Dashboard
           </a>
+          {% endif %}
         {% endif %}
 
         {% comment %}<div class="sb-sidenav-menu-heading">Shorcuts</div>{% endcomment %}
@@ -87,21 +93,22 @@
       {% comment %}</nav>{% endcomment %}
         {% comment %}</div>{% endcomment %}
       <div class="sb-sidenav-menu-heading">Shorcuts</div>
-      {% if not user.is_authenticated %}
+      {% if user.is_authenticated %}
+        {% if user.student or user.is_superuser %}
         <a class="nav-link" href=>
           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-            My Auctions
+            My Attendances
         </a>
         <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-            My Auctioned Products
+            My Subjects
         </a>
         <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-            Releasable Products
+            Recent Announcements
         </a>
         {% endif %}
-        {% if user.is_bidder %}
+        {% if user.professor %}
         <a class="nav-link" href="">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
             Available Auctions
@@ -119,6 +126,7 @@
           Unclaimed Products
         </a>
         {% endif %}
+      {% endif %}
         </div>
       </div>
       <div class="sb-sidenav-footer">
