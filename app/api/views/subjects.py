@@ -12,5 +12,5 @@ class SubjectListAPIView(ListAPIView):
         # will be another field in the future, probably discord ID
         account_id = self.kwargs.get('pk')
 
-        return Subject.objects.filter(sections__student__account_id=account_id)
+        return Subject.objects.filter(schedules__student__account_id=account_id)
 
