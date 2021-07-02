@@ -2,12 +2,12 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from django.urls import path
 
-from ..views.subjects import SubjectListAPIView
+from ..views.subjects import SubjectScheduleListAPIView
 
 subject_patterns = format_suffix_patterns([
     path(
         'student/<int:pk>',
-        SubjectListAPIView.as_view(),
+        SubjectScheduleListAPIView.as_view(),
         name='subject_list',
     ),
 ])
