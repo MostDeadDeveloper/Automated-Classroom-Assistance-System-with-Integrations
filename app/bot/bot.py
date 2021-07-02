@@ -44,10 +44,13 @@ async def recent_announcements(ctx):
 
 @client.command()
 async def create_new_announcement(ctx, *args):
-    url = 'http://127.0.0.1:8000/api/account/discord/auth'
+    url = 'http://superepicguysuper.pythonanywhere.com/api/accounts/discord/auth'
     print(ctx.author.id)
     response = requests.post(url, data={'discord_id': ctx.author.id })
 
-    await ctx.send(response.status_code)
+    account_id = response.content['discord_id']
+
+
+    await ctx.send(response.content)
 
 client.run(TOKEN)
