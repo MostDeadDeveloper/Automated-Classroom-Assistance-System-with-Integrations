@@ -8,12 +8,27 @@ from core.models import BaseModel
 
 class Subject(BaseModel):
     name = models.CharField(max_length=32)
-    sections = models.ManyToManyField(
+    schedules = models.ManyToManyField(
         'account.Section',
+        through='SubjectSchedule',
+        through_fields=('subject','section'),
     )
 
+    def __str__(self):
+        return self.name
 
 class SubjectSchedule(BaseModel):
+    subject = models.ForeignKey(
+        Subject,
+        on_delete=models.CASCADE,
+        null=True
+    )
+    section = models.ForeignKey(
+        'account.Section',
+        on_delete=models.CASCADE,
+        null=True,
+    )
+
     CHOICES = (
         ('Monday','Monday',),
         ('Tuesday','Tuesday',),
@@ -26,7 +41,6 @@ class SubjectSchedule(BaseModel):
     day_of_the_week = models.CharField(max_length=16,choices=CHOICES,blank=True, null=True)
     start_time = models.TimeField(blank=True, null=True)
     end_time = models.TimeField(blank=True, null=True)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
 
     @property
     def duration(self):
@@ -37,4 +51,7 @@ class SubjectSchedule(BaseModel):
         diff = end_time - start_time
 
         return diff.seconds // 3600
+
+    def __str__(self):
+        return '{} - {} {} -  {}'.format(self.subject, self.section, self.start_time, self.end_time)
 
