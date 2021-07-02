@@ -10,9 +10,11 @@ from core.models import BaseModel
 
 class Section(BaseModel):
     year_level = models.CharField(max_length=10)
+    name = models.CharField(max_length=20, default='')
 
 
 class Student(BaseModel):
+
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
     account = models.OneToOneField(
         'account.Account',

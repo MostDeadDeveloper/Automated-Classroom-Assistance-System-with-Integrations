@@ -29,7 +29,7 @@ urlpatterns = [
     path('api/', include('api.urls', namespace='api')),
     path('users/', include('django.contrib.auth.urls')),
     path('billboard/', include('billboard.urls')),
-    path('subject/', include('billboard.urls')),
+    path('subject/', include('subject.urls')),
     path('', BaseRedirectView.as_view(), name='index'),
 
 ]

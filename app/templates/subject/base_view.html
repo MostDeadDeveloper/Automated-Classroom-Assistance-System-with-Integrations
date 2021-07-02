@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    ACASI | Schedule
+{% endblock %}
+
+{% block content %}
+    <div class="bb_header_container">
+        <div class="bb_new">
+                <a href="/subject/schedule" class="btn btn-default">
+                    <img src="{% static 'images/icons/house-door.svg' %}" alt="HOME"/>
+                </a>
+            </div>
+        <div class="bb_title">
+            <h1 class="header_text"><a href="/subject/schedule">ACASI | Schedule</a></h1>
+        </div>
+    </div>
+    <div class="bb_main_container">
+        {% block subject_content %}
+        {% endblock subject_content %}
+    </div>
+{% endblock %}

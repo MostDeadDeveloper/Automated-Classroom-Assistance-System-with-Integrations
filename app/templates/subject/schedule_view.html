@@ -1,0 +1,48 @@
+{% extends 'subject/base_view.html' %}
+
+{% block subject_content %}
+<div>
+    <h1 class="title_text">{{ section_data.name }} Schedule</h1>
+    <div class="bb_table_container">
+        <table class="bb_table">
+            <tr class="bb_tr">
+                <th colspan="2" class="bb_th">Time</th>
+                <th class="bb_th">Sunday</th>
+                <th class="bb_th">Monday</th>
+                <th class="bb_th">Tuesday</th>
+                <th class="bb_th">Thursday</th>
+                <th class="bb_th">Friday</th>
+                <th class="bb_th">Saturday</th>
+            </tr>
+            <tr class="bb_tr">
+                <td class="bb_td">test1</td>
+                <td class="bb_td">test2</td>
+                <td class="bb_td">test3</td>
+                <td class="bb_td">test4</td>
+                <td class="bb_td">test5</td>
+                <td class="bb_td">test6</td>
+                <td class="bb_td">test7</td>
+                <td class="bb_td">test8</td>
+            </tr>
+                {% for data in subject_data %}
+                    <tr class="bb_tr">
+                        <td class="bb_td">
+                            {{ data.subject.name }}<br>
+                        </td>
+                        <td class="bb_td">
+                            {% for student in data.student_data %}
+                                {{ student.account }}<br>
+                            {% endfor %}
+                        </td>
+                        <td class="bb_td">
+                            {% for subjectschedule_data in data.subject_subjectchedule_id %}
+                                {{ subjectschedule_data.subject.name }}<br>
+                            {% endfor %}
+                        </td>
+                        <td class="bb_td">{{ data.up_date }}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock subject_content %}
