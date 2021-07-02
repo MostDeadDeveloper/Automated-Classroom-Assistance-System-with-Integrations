@@ -9,6 +9,7 @@ from core.models import BaseModel
 
 
 class Section(BaseModel):
+<<<<<<< HEAD
     year_level = models.CharField(max_length=10)
     name = models.CharField(max_length=20, default='')
 
@@ -16,6 +17,18 @@ class Section(BaseModel):
 class Student(BaseModel):
 
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
+=======
+    year_level = models.CharField(max_length=10, null=True)
+    course_code = models.CharField(max_length=16, null=True)
+    couse_name = models.CharField(max_length=16, null=True)
+
+    def __str__(self):
+        return self.course_code
+
+
+class Student(BaseModel):
+    section = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
+>>>>>>> 28bf0766c3621c129636dc7b89958004aeab5a76
     account = models.OneToOneField(
         'account.Account',
         on_delete=models.CASCADE,
