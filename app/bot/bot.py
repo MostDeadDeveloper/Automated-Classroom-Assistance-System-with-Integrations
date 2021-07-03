@@ -52,17 +52,6 @@ async def list_all_subjects(ctx, arg):
     
     try:
         response = requests.get('http://superepicguysuper.pythonanywhere.com/api/subjects/student/1', timeout=5)
-        schedule = response.json()
-        #print(schedule)
-
-        sched_str = json.dumps(schedule)
-        sched_dict = json.loads(sched_str)
-
-        for i in sched_dict:
-            print (i['name'])
-            for i in sched_dict:
-                print(i['schedules'][0]['start_time'], "-", i['schedules'][0]['end_time'])
-            
         response.raise_for_status()
         print("Successful.")
     except requests.exceptions.HTTPError as errh:
@@ -73,16 +62,17 @@ async def list_all_subjects(ctx, arg):
         print(errt)
     except requests.exceptions.RequestException as err:
         print(err)
+        
+    schedule = response.json()
+    sched_str = json.dumps(schedule)
+    sched_dict = json.loads(sched_str)
 
-    #url = "http://superepicguysuper.pythonanywhere.com/admin/account/student/"
-    #response = requests.post(url, arg)
-
-    #await ctx.send('Subjects and Schedule')
-    #print(response.json())
-    #schedule = ["T/F 11:30AM-01:30PM/10:30AM-01:30PM", "T/F 07:30AM-10:30AM/07:30AM-09:30AM", "W 03:00PM-06:00PM", "W 09:00AM-12:00PM", "S 10:00AM-12:00PM"]
-    #subjects = ["Information Management", "Operating Systems", "CS Free Elective 2", "Art Appreciation", "Team Sports"]
-
-    #await ctx.send("\n".join("{} - {}".format(x, y) for x, y in zip(schedule, subjects)))
+    subjlist = []
+    for i in sched_dict: 
+        a = i['name']
+        b = i['schedules'][0]['start_time'] + " - " + i['schedules'][0]['end_time']
+        subjlist.append("```{}: {}```".format(a, b))
+    await ctx.send("```SUBJECTS AND SCHEDULE```" + ''.join(subjlist))
 
 @client.command()
 async def recent_announcements(ctx):
