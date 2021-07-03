@@ -1,17 +1,43 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.views.generic.base import RedirectView
 from django.utils import timezone
+
 from .models import Professor
 from .forms import ProfessorForm
 
-
-def base_view(request):
-    data_info = Professor.objects.all().order_by('professor_data')
-    return render(request, 'billboard/table_view.html', {'data_info': data_info})
+from core.views import LoginGenericView
 
 
-def info_detail(request, pk):
-    data_info = get_object_or_404(Professor, pk=pk)
-    return render(request, 'billboard/info_view.html', {'data_info': data_info})
+class BaseRedirectView(RedirectView):
+    def get_redirect_url(self, **kwargs):
+        user = self.request.user
+
+        if not user.is_authenticated:
+            return reverse('account:account_login')
+
+        if user.is_authenticated:
+            return reverse('billboard:base_view')
+
+
+class BaseView(LoginGenericView):
+
+    template_name = 'billboard/table_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['data_info'] = Professor.objects.all().order_by('professor_data')
+        return context
+
+
+class InfoDetailView(LoginGenericView):
+
+    template_name = 'billboard/info_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['data_info'] = get_object_or_404(Professor, pk=self.kwargs["pk"])
+        return context
+
 
 
 def info_new(request):

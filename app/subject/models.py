@@ -13,10 +13,10 @@ class Subject(BaseModel):
     schedules = models.ManyToManyField(
         'account.Section',
         through='SubjectSchedule',
-        through_fields=('subject','section'),
+        through_fields=('subject', 'section'),
     )
 
-    def subject_subjectchedule_id(self):
+    def subject_subjectschedule_id(self):
         return SubjectSchedule.objects.all()
 
     def __str__(self):
