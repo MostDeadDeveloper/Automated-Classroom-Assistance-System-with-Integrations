@@ -3,6 +3,8 @@ from rest_framework import serializers
 from subject.models import Subject, SubjectSchedule
 
 class SubjectScheduleSerializer(serializers.ModelSerializer):
+    subject = serializers.CharField(source='subject',read_only=True)
+
     class Meta:
         model = SubjectSchedule
         fields = ('start_time','end_time',)
