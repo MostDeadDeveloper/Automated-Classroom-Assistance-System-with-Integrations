@@ -2,11 +2,13 @@ import os
 import logging
 import requests
 import json
-from discord.ext import commands
-
 from dotenv import load_dotenv
+
 from discord.ext import commands
 import discord
+
+from cogs import Announcements
+from utils import fetch_login_data
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -78,6 +80,9 @@ async def list_all_subjects_today(ctx):
     try:
         response = requests.get('http://superepicguysuper.pythonanywhere.com/api/subjects/student/1/today', timeout=5)
         response.raise_for_status()
+        login_data = fetch_login_data(ctx.author.id)
+        await ctx.send(login_data)
+
         print("Successful.")
     except requests.exceptions.HTTPError as errh:
         print(errh)
@@ -88,6 +93,8 @@ async def list_all_subjects_today(ctx):
     except requests.exceptions.RequestException as err:
         print(err)
 
+    schedule = response.json()
+    sched_str = json.dumps(schedule)
     sched_dict = json.loads(sched_str)
 
     subjlist = []
@@ -97,12 +104,7 @@ async def list_all_subjects_today(ctx):
         subjlist.append("```{}: {}```".format(a, b))
     await ctx.send("```SUBJECTS AND SCHEDULE For Today```" + ''.join(subjlist))
 
-@client.command()
-async def recent_announcements(ctx):
-    await ctx.send('Recent Announcements')
-    date = ["June 25", "July 3", "July 5", "July 6", "July 17"]
-    announcements = ["ERD Graded Exercise", "Art App Assumptions of Art", "DAA Final paper", "DAA Final presentation", "OS Final Project"]
-
-    await ctx.send("\n".join("{} - {}".format(x, y) for x, y in zip(date, announcements)))
+# register the registrations cog
+client.add_cog(Announcements(client))
 
 client.run(TOKEN)
