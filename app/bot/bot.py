@@ -74,6 +74,30 @@ async def list_all_subjects(ctx):
     await ctx.send("```SUBJECTS AND SCHEDULE```" + ''.join(subjlist))
 
 @client.command()
+async def list_all_subjects_today(ctx):
+    try:
+        response = requests.get('http://superepicguysuper.pythonanywhere.com/api/subjects/student/1/today', timeout=5)
+        response.raise_for_status()
+        print("Successful.")
+    except requests.exceptions.HTTPError as errh:
+        print(errh)
+    except requests.exceptions.ConnectionError as errc:
+        print(errc)
+    except requests.exceptions.Timeout as errt:
+        print(errt)
+    except requests.exceptions.RequestException as err:
+        print(err)
+
+    sched_dict = json.loads(sched_str)
+
+    subjlist = []
+    for i in sched_dict:
+        a = i['subject']
+        b = i['start_time'] + " - " + i['end_time']
+        subjlist.append("```{}: {}```".format(a, b))
+    await ctx.send("```SUBJECTS AND SCHEDULE For Today```" + ''.join(subjlist))
+
+@client.command()
 async def recent_announcements(ctx):
     await ctx.send('Recent Announcements')
     date = ["June 25", "July 3", "July 5", "July 6", "July 17"]
