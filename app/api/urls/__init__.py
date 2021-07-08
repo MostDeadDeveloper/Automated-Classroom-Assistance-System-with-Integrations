@@ -4,6 +4,7 @@ from django.urls import path, include
 
 from .account import account_patterns
 from .subjects import subject_patterns
+from .announcements import announcement_patterns
 
 app_name ='api'
 
@@ -17,5 +18,10 @@ urlpatterns = [
         'subjects/',
         include((subject_patterns,'subjects'),namespace='subjects'),
         name='subject_api',
+    ),
+    path(
+        'announcements/',
+        include((announcement_patterns,'announcements'),namespace='announcements'),
+        name='announcement_api',
     ),
 ]
