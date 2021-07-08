@@ -2,6 +2,7 @@ import os
 import logging
 import requests
 import json
+from datetime import datetime
 from dotenv import load_dotenv
 
 from discord.ext import commands
@@ -72,7 +73,7 @@ async def list_all_subjects(ctx):
     for i in sched_dict:
         a = i['subject']
         b = i['start_time'] + " - " + i['end_time']
-        subjlist.append("```{}: {}```".format(a, b))
+        subjlist.append("```\n{}: {}```".format(a, b))
     await ctx.send("```SUBJECTS AND SCHEDULE```" + ''.join(subjlist))
 
 @client.command()
@@ -107,4 +108,38 @@ async def list_all_subjects_today(ctx):
 # register the registrations cog
 client.add_cog(Announcements(client))
 
-client.run(TOKEN)
+@client.command()
+async def enlist_my_notes(ctx):
+    await ctx.send('Type the name of the subject:')
+    subjectName = await client.wait_for('message')
+    strsubjectName = subjectName.content
+
+    await ctx.send('Type your notes for {}:'.format(strsubjectName))
+    notes = await client.wait_for('message')
+    date = datetime.now()
+    strnotes = notes.content
+
+    await ctx.send('Notes for {} saved!'.format(strsubjectName))
+    print(strsubjectName)
+    print(strnotes)
+    print(date)
+
+    data = {'subject': strsubjectName,
+            'notes': strnotes,
+            'date_created':date}
+
+    response = requests.post("URL", data)
+    print(response.text)
+
+@client.command()
+async def list_all_notes_recent (ctx):
+    await ctx.send('Type the name of the subject:')
+    subjectName = await client.wait_for('message')
+    strsubjectName = subjectName.content
+    response = requests.get("URL")
+    json_response = response.json()
+    notes = json_response['']['']
+    print(notes)
+ 
+    
+client.run(TOKEN) 
