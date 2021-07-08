@@ -22,20 +22,36 @@ class Announcements(commands.Cog):
         self.test_print.cancel()
 
     @commands.command()
-    async def recent_announcements(self, ctx):
-        await ctx.send('Recent Announcements')
-        date = ["June 25", "July 3", "July 5", "July 6", "July 17"]
-
+    async def recent_announcements(self, ctx, arg):
         login_data = fetch_login_data(ctx.author.id)
-        announcements = ["ERD Graded Exercise", "Art App Assumptions of Art", "DAA Final paper", "DAA Final presentation", "OS Final Project"]
 
-        await ctx.send("\n".join("{} - {}".format(x, y) for x, y in zip(date, announcements)))
+        schedule = login_data.json()
+        sched_str = json.dumps(schedule)
+        data = json.loads(sched_str)
+
+        url = 'http://superepicguysuper.pythonanywhere.com/api/announcements/list/account/{}/count/{}'.format(
+            data['account_id'],
+            arg,
+        )
+        print(url)
+
+        response = requests.get(url, timeout=5)
+
+        schedule = response.json()
+        sched_str = json.dumps(schedule)
+        data = json.loads(sched_str)
+
+        values = []
+        for value in data:
+            values.append('{} - {}'.format(value['scheduled_date'], value['content']))
+
+        await ctx.send('Recent Announcements Posted:\n'.join(values))
 
     @tasks.loop(seconds=5.0)
     async def test_print(self):
         print(self.index)
         self.index += 1
 
-    @commands.command()
-    async def create_announcement(self,ctx):
+    # @commands.command()
+    # async def create_announcement(self,ctx):
 

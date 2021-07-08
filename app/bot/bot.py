@@ -32,7 +32,7 @@ async def on_ready():
         'we have logged in as {0.user}'.format(client)
     )
     # # print('available channels: {}'.format(client.guilds[0].channels[-1]))
-    
+
     # print("available guilds: ")
     # for index, guild in enumerate(client.guilds):
         # print("[{}] - {}".format(index , guild))
@@ -140,6 +140,5 @@ async def list_all_notes_recent (ctx):
     json_response = response.json()
     notes = json_response['']['']
     print(notes)
- 
-    
+
 client.run(TOKEN) 
