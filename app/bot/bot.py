@@ -67,9 +67,9 @@ async def list_all_subjects(ctx):
     sched_dict = json.loads(sched_str)
 
     subjlist = []
-    for i in sched_dict: 
-        a = i['name']
-        b = i['schedules'][0]['start_time'] + " - " + i['schedules'][0]['end_time']
+    for i in sched_dict:
+        a = i['subject']
+        b = i['start_time'] + " - " + i['end_time']
         subjlist.append("```\n{}: {}```".format(a, b))
     await ctx.send("```SUBJECTS AND SCHEDULE```" + ''.join(subjlist))
 
