@@ -28,28 +28,27 @@ async def on_ready():
     print(
         'we have logged in as {0.user}'.format(client)
     )
-    # print('available channels: {}'.format(client.guilds[0].channels[-1]))
+    # # print('available channels: {}'.format(client.guilds[0].channels[-1]))
     
-    print("available guilds: ")
-    for index, guild in enumerate(client.guilds):
-        print("[{}] - {}".format(index , guild))
+    # print("available guilds: ")
+    # for index, guild in enumerate(client.guilds):
+        # print("[{}] - {}".format(index , guild))
 
-    selected_index = int(input("input your selected guild to implant bot."))
+    # selected_index = int(input("input your selected guild to implant bot."))
 
-    print("available channels")
-    for index, channel in enumerate(client.guilds[selected_index].channels):
-        print("[{}] - {}".format(index , channel))
+    # print("available channels")
+    # for index, channel in enumerate(client.guilds[selected_index].channels):
+        # print("[{}] - {}".format(index , channel))
 
-    selected_channel_index = int(input("input your selected channel to implant bot."))
+    # selected_channel_index = int(input("input your selected channel to implant bot."))
 
-    selected_channel = client.guilds[selected_index].channels[selected_channel_index]
-    await client.guilds[0].channels[-2].send("discord bot online.")
+    # selected_channel = client.guilds[selected_index].channels[selected_channel_index]
+    # await client.guilds[0].channels[-2].send("discord bot online.")
 
-    print(selected_channel)
+    # print(selected_channel)
 
 @client.command()
-async def list_all_subjects(ctx, arg):
-    
+async def list_all_subjects(ctx):
     try:
         response = requests.get('http://superepicguysuper.pythonanywhere.com/api/subjects/student/1', timeout=5)
         response.raise_for_status()
@@ -62,7 +61,7 @@ async def list_all_subjects(ctx, arg):
         print(errt)
     except requests.exceptions.RequestException as err:
         print(err)
-        
+
     schedule = response.json()
     sched_str = json.dumps(schedule)
     sched_dict = json.loads(sched_str)
@@ -114,5 +113,6 @@ async def list_all_notes_recent (ctx):
     json_response = response.json()
     notes = json_response['']['']
     print(notes)
+ 
     
 client.run(TOKEN) 
