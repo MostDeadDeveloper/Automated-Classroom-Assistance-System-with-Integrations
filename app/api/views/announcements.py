@@ -19,5 +19,5 @@ class LatestAnnoucementListAPIView(ListAPIView):
         count = self.kwargs.get('counter')
 
         return Announcement.objects.filter(
-            account=account_id,
+            section__student__account_id=account_id,
         ).order_by('scheduled_date')[0:count]

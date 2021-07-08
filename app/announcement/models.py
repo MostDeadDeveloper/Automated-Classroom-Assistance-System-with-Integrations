@@ -17,8 +17,8 @@ class Announcement(BaseModel):
     scheduled_date = models.DateTimeField(null=True)
     content = models.CharField(max_length=75, null=True)
     is_repetitive = models.BooleanField(default=False) # determines if the announcement will be repeated
-    account = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+    section = models.ForeignKey(
+        'account.Section',
         null=True,
         on_delete=models.CASCADE,
     )
