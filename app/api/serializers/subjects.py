@@ -4,10 +4,11 @@ from subject.models import Subject, SubjectSchedule
 
 class SubjectScheduleSerializer(serializers.ModelSerializer):
     subject = serializers.CharField(source='subject.name',read_only=True)
+    subject_id = serializers.CharField(source='subject.id',read_only=True)
 
     class Meta:
         model = SubjectSchedule
-        fields = ('id', 'start_time','end_time','subject')
+        fields = ('start_time','end_time','subject', 'subject_id')
 
 
 class SubjectSerializer(serializers.ModelSerializer):
