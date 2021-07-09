@@ -1,0 +1,95 @@
+{% extends 'subject/base_view.html' %}
+
+{% block subject_content %}
+<div>
+    <h1 class="title_text">{{ section_data.name }} Schedule</h1>
+    <div class="bb_table_container">
+        <table class="bb_table">
+            <tr class="bb_tr">
+                <th class="bb_th">Sunday</th>
+                {% for data in schedule_data %}
+                    {% if data.day_of_the_week == 'Sunday' %}
+                        <td class="bb_th"></td>
+                        <td class="bb_td">
+                            {{ data.subject.name }}<br>
+                            {{ data.start_time }} - {{ data.end_time }}<br>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            <tr class="bb_tr">
+                <th class="bb_th">Monday</th>
+                {% for data in schedule_data %}
+                    {% if data.day_of_the_week == 'Monday' %}
+                        <td class="bb_th"></td>
+                        <td class="bb_td">
+                            {{ data.subject.name }}<br>
+                            {{ data.start_time }} - {{ data.end_time }}<br>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            <tr class="bb_tr">
+                <th class="bb_th">Tuesday</th>
+                {% for data in schedule_data %}
+                    {% if data.day_of_the_week == 'Tuesday' %}
+                        <td class="bb_th"></td>
+                        <td class="bb_td">
+                            {{ data.subject.name }}<br>
+                            {{ data.start_time }} - {{ data.end_time }}<br>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            <tr class="bb_tr">
+                <th class="bb_th">Wednesday</th>
+                {% for data in schedule_data %}
+                    {% if data.day_of_the_week == 'Wednesday' %}
+                        <td class="bb_th"></td>
+                        <td class="bb_td">
+                            {{ data.subject.name }}<br>
+                            {{ data.start_time }} - {{ data.end_time }}<br>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            <tr class="bb_tr">
+                <th class="bb_th">Thursday</th>
+                {% for data in schedule_data %}
+                    {% if data.day_of_the_week == 'Thursday' %}
+                        <td class="bb_th"></td>
+                        <td class="bb_td">
+                            {{ data.subject.name }}<br>
+                            {{ data.start_time }} - {{ data.end_time }}<br>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            <tr class="bb_tr">
+                <th class="bb_th">Friday</th>
+                {% for data in schedule_data %}
+                    {% if data.day_of_the_week == 'Friday' %}
+                        <td class="bb_th"></td>
+                        <td class="bb_td">
+                            {{ data.subject.name }}<br>
+                            {{ data.start_time }} - {{ data.end_time }}<br>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            <tr class="bb_tr">
+                <th class="bb_th">Saturday</th>
+                {% for data in schedule_data %}
+                    {% if data.day_of_the_week == 'Saturday' %}
+                        <td class="bb_th"></td>
+                        <td class="bb_td">
+                            {{ data.subject.name }}<br>
+                            {{ data.start_time }} - {{ data.end_time }}<br>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock subject_content %}

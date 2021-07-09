@@ -5,14 +5,19 @@ from django.db import models
 from django.conf import settings
 
 from core.models import BaseModel
+from account.models import Section
+
 
 class Subject(BaseModel):
     name = models.CharField(max_length=32)
     schedules = models.ManyToManyField(
         'account.Section',
         through='SubjectSchedule',
-        through_fields=('subject','section'),
+        through_fields=('subject', 'section'),
     )
+
+    def subject_subjectschedule_id(self):
+        return SubjectSchedule.objects.all()
 
     def __str__(self):
         return self.name
@@ -30,15 +35,15 @@ class SubjectSchedule(BaseModel):
     )
 
     CHOICES = (
-        ('Monday','Monday',),
-        ('Tuesday','Tuesday',),
-        ('Wednesday','Wednesday',),
-        ('Thursday','Thursday',),
-        ('Friday','Friday',),
-        ('Saturday','Saturday',),
-        ('Sunday','Sunday',),
+        ('Monday', 'Monday',),
+        ('Tuesday', 'Tuesday',),
+        ('Wednesday', 'Wednesday',),
+        ('Thursday', 'Thursday',),
+        ('Friday', 'Friday',),
+        ('Saturday', 'Saturday',),
+        ('Sunday', 'Sunday',),
     )
-    day_of_the_week = models.CharField(max_length=16,choices=CHOICES,blank=True, null=True)
+    day_of_the_week = models.CharField(max_length=16, choices=CHOICES, blank=True, null=True)
     start_time = models.TimeField(blank=True, null=True)
     end_time = models.TimeField(blank=True, null=True)
 
