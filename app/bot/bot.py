@@ -185,7 +185,7 @@ async def list_all_notes_recent (ctx, arg):
     for value in notes_data:
         values.append('{} - {}'.format(value['created_time'], value['content']))
 
-    await ctx.send('Latest Notes in Your Selected Subject:\n'.join(values))
+    await ctx.send('\n'.join(values))
 
 
 client.run(TOKEN)
