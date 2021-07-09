@@ -7,7 +7,7 @@ class SubjectScheduleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SubjectSchedule
-        fields = ('start_time','end_time','subject')
+        fields = ('id', 'start_time','end_time','subject')
 
 
 class SubjectSerializer(serializers.ModelSerializer):
