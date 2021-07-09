@@ -140,19 +140,52 @@ async def list_all_notes_recent (ctx, arg):
     sched_str = json.dumps(schedule)
     data = json.loads(sched_str)
 
-    await ctx.send('Type the name of the subject:')
+    try:
+        response = requests.get('http://superepicguysuper.pythonanywhere.com/api/subjects/student/1', timeout=5)
+        response.raise_for_status()
+        print("Successful.")
+    except requests.exceptions.HTTPError as errh:
+        print(errh)
+    except requests.exceptions.ConnectionError as errc:
+        print(errc)
+    except requests.exceptions.Timeout as errt:
+        print(errt)
+    except requests.exceptions.RequestException as err:
+        print(err)
+
+    schedule = response.json()
+    sched_str = json.dumps(schedule)
+    sched_dict = json.loads(sched_str)
+
+    subjlist = []
+    for i in sched_dict:
+        c = i['subject_id']
+        a = i['subject']
+        b = i['start_time'] + " - " + i['end_time']
+        subjlist.append("```\n{} - {}: {}```".format(c ,a, b))
+    await ctx.send("```SUBJECTS AND SCHEDULE```" + ''.join(subjlist))
+
+    # await ctx.send('Type the id of the subject:')
     subjectName = await client.wait_for('message')
-    strsubjectName = subjectName.content
+    subj_id = subjectName.content
+    print(subj_id)
 
     url = 'http://superepicguysuper.pythonanywhere.com/api/announcements/notes/list/{}/subject/{}/count/{}'.format(
         data['account_id'],
-        strsubjectName,
+        subj_id,
         arg,
     )
+    print (url)
 
-    response = requests.get(url)
-    json_response = response.json()
-    notes = json_response['']['']
-    print(notes)
+    data_response = requests.get(url)
+    json_response = json.dumps(data_response.json())
+    notes_data = json.loads(json_response)
+
+    values = []
+    for value in notes_data:
+        values.append('{} - {}'.format(value['created_time'], value['content']))
+
+    await ctx.send('Latest Notes in Your Selected Subject:\n'.join(values))
+
 
 client.run(TOKEN)
