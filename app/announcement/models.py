@@ -23,3 +23,15 @@ class Announcement(BaseModel):
         on_delete=models.CASCADE,
     )
 
+class Note(BaseModel):
+    content = models.CharField(max_length=75, null=True)
+    account = models.ForeignKey(
+        'account.Account',
+        null=True,
+        on_delete=models.CASCADE,
+    )
+    subject = models.ForeignKey(
+        'subject.Subject',
+        null=True,
+        on_delete=models.CASCADE,
+    )
