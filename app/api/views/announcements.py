@@ -1,5 +1,5 @@
 
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 
 from ..serializers.announcements import AnnouncementSerializer, NoteSerializer
 
@@ -36,3 +36,5 @@ class LatestNotesListAPIView(ListAPIView):
             subject_id=subject_id,
         ).order_by('created_time')[0:count]
 
+class CreateNoteListAPIView(ListAPIView):
+    serializer_class = NoteSerializer

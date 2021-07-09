@@ -11,4 +11,23 @@ class Attendance(BaseModel):
         null=True,
         on_delete=models.CASCADE,
     )
+    attendance_group = models.ForeignKey(
+        'attendance.AttendanceGroup',
+        on_delete=models.CASCADE,
+        null=True,
+    )
 
+
+class AttendanceGroup(BaseModel):
+    section = models.ForeignKey(
+        'account.Section',
+        on_delete=models.CASCADE,
+        null=True,
+    )
+    subject_sched = models.ForeignKey(
+        'subject.SubjectSchedule',
+        on_delete=models.CASCADE,
+        null=True,
+    )
+    duration = models.IntegerField(default=0)
+    repetition = models.IntegerField(default=0)
