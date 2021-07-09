@@ -192,7 +192,7 @@ async def start_log_attendance(ctx, arg):
     await ctx.send('Start Logging Attendance:')
 
 @client.command()
-async def log_my_attendance(ctx, arg):
+async def log_my_attendance(ctx):
     login_data = fetch_login_data(ctx.author.id)
 
     schedule = login_data.json()
@@ -232,17 +232,15 @@ async def log_my_attendance(ctx, arg):
 
     url = 'http://superepicguysuper.pythonanywhere.com/api/attendances/student/{}/subject/{}'.format(
         data['account_id'],
-        subj_id
+        subj_id,
     )
-    print (url)
+    print(url)
 
     data_response = requests.get(url)
     json_response = json.dumps(data_response.json())
     notes_data = json.loads(json_response)
 
-    values = []
-    for value in notes_data:
-        values.append('{} - {}'.format(value['created_time'], value['content']))
+
 
     await ctx.send('Latest Notes in Your Selected Subject:\n'.join(values))
 

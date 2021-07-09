@@ -17,8 +17,9 @@ class LogAttendanceAPIView(APIView):
         subject_id = self.kwargs.get('subject_id')
 
         section = Section.objects.get(student__account_id=account_id)
+        SubjectSchedule.objects.filter(section=section,
         if account_id and subject_id:
-            Attendance.objects.create(subj
+            Attendance.objects.create(subject_sched=subject_id,
 
         return pass
 
