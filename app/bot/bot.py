@@ -185,9 +185,7 @@ async def list_all_notes_recent (ctx, arg):
     for value in notes_data:
         values.append('{} - {}'.format(value['created_time'], value['content']))
 
-    string_val ='Latest Notes in Your Selected Subject\n'.join(values)
-    await ctx.send(string_val)
-
+    await ctx.send('\n'.join(values))
 
 @client.command()
 async def start_log_attendance(ctx, arg):
