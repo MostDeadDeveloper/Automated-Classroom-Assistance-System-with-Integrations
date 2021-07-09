@@ -132,13 +132,27 @@ async def enlist_my_notes(ctx):
     print(response.text)
 
 @client.command()
-async def list_all_notes_recent (ctx):
+async def list_all_notes_recent (ctx, arg):
+
+    login_data = fetch_login_data(ctx.author.id)
+
+    schedule = login_data.json()
+    sched_str = json.dumps(schedule)
+    data = json.loads(sched_str)
+
     await ctx.send('Type the name of the subject:')
     subjectName = await client.wait_for('message')
     strsubjectName = subjectName.content
-    response = requests.get("URL")
+
+    url = 'http://superepicguysuper.pythonanywhere.com/api/announcements/notes/list/{}/subject/{}/count/{}'.format(
+        data['account_id'],
+        strsubjectName,
+        arg,
+    )
+
+    response = requests.get(url)
     json_response = response.json()
     notes = json_response['']['']
     print(notes)
 
-client.run(TOKEN) 
+client.run(TOKEN)
