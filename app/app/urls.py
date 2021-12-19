@@ -25,11 +25,12 @@ from account.views import BaseRedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
+    path('location/', include('location.urls')),
     path('api-token-auth/',views.obtain_auth_token),
     path('api/', include('api.urls', namespace='api')),
     path('users/', include('django.contrib.auth.urls')),
-    path('billboard/', include('billboard.urls')),
-    path('subject/', include('subject.urls')),
+    # path('billboard/', include('billboard.urls')),
+    # path('subject/', include('subject.urls')),
     path('', BaseRedirectView.as_view(), name='index'),
 
 ]

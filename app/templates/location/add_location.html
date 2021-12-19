@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Add Your Location
+{% endblock %}
+
+{% block content %}
+  <div id ="demo"> </div>
+  <button onclick="getLocation()">Try It</button>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+  var x = document.getElementById("demo");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+    axios.post()
+  }
+  </script>
+{% endblock %}

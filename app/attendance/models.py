@@ -4,8 +4,8 @@ from django.conf import settings
 from core.models import BaseModel
 
 class Attendance(BaseModel):
-    start_date = models.DateField(null=True)
-    end_date = models.DateField(null=True)
+    start_date = models.TimeField(null=True)
+    end_date = models.TimeField(null=True)
     account = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         null=True,
@@ -31,3 +31,6 @@ class AttendanceGroup(BaseModel):
     )
     duration = models.IntegerField(default=0)
     repetition = models.IntegerField(default=0)
+
+    def __str__(self):
+        return '{} - {}'.format(self.section.name, self.subject_sched)

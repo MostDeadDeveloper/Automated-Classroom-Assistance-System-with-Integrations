@@ -12,6 +12,9 @@ class Section(BaseModel):
     year_level = models.CharField(max_length=10)
     name = models.CharField(max_length=20, default='')
 
+    def __str__(self):
+        return self.name
+
 
 class Student(BaseModel):
 

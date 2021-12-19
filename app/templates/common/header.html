@@ -95,17 +95,17 @@
       <div class="sb-sidenav-menu-heading">Shorcuts</div>
       {% if user.is_authenticated %}
         {% if user.student or user.is_superuser %}
-        <a class="nav-link" href="{% url 'billboard:base_view' %}">
+        <a class="nav-link" href="#">
           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
               Contact Information Billboard
         </a>
-	<a class="nav-link" href="{% url 'subject:schedule_view' %}">
+	<a class="nav-link" href="#">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
             My Subjects
         </a>
         {% endif %}
         {% if user.professor %}
-        <a class="nav-link" href="">
+        <a class="nav-link" href="#">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
             Available Auctions
         </a>

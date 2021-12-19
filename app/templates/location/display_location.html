@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Display Collected Location
+{% endblock %}
+
+{% block content %}
+  Test Text
+  <div id='map' style='width: 100%; top:0,bottom:0;'></div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  mapboxgl.accessToken ='pk.eyJ1Ijoic3VwZXJlcGljZ3V5IiwiYSI6ImNrcng2Mmx0MDBuZzYyb3IwdW41NW42bmgifQ.fP9yqRi6YApO4tZB7dgBvg';
+  const map = new mapboxgl.Map({
+  container: 'map', // container ID
+  style: 'mapbox://styles/mapbox/streets-v11', // style URL
+  center: [-74.5, 40], // starting position [lng, lat]
+  zoom: 9 // starting zoom
+  });
+</script>
+{% endblock %}
